@@ -16,8 +16,8 @@ struct listNode
 typedef struct listNode ListNode;
 typedef ListNode *ListNodePtr;
 
-
-ListNodePtr startPtr = NULL; // initially there are no nodes
+int isEmpty(ListNodePtr sPtr);
+void update (int id);
 
 int main(void)
 {
