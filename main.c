@@ -161,5 +161,77 @@ system("cls");
     while(1);
 }
 
+void update ()
+{
+    ListNodePtr current = startPtr;
+    int id,status=0;
+    system("cls");
+    headMessage("UPDATE");
+    if(startPtr == NULL)
+    {
+        printf("\n\t\t\tList is Empty\n") ;
+        system("pause");
+        system("cls");
+    }
+    else
+    {
+        printf("\n\t\t\tEnter Id of the book: ");
+        scanf("%d",&id);
+        system("cls");
+        headMessage("UPDATE");
+        while (current != NULL)
+        {
+            if (current->l.id == id)
+            {
+                printf ("\n\t\t\tRecord with ID number %d Found !!!\n", id);
+                system("pause");
+                system("cls");
+                headMessage("UPDATE");
+                do
+                {
+                    printf("\n\t\t\tEnter new Book Name: ");
+                    fflush(stdin);
+                    gets(current->l.bookname);
+                    status=isNameValid(&current->l.bookname);
+                    if(!status)
+                    {
+                        printf("\n\t\t\tName contains invalid character. Please enter again.");
+
+                    }
+                }
+                while(!status);
+                 do
+                {
+                    printf("\n\t\t\tEnter new author Name: ");
+                    fflush(stdin);
+                    gets(current->l.author);
+                    status=isNameValid(&current->l.author);
+                    if(!status)
+                    {
+                        printf("\n\t\t\tName contains invalid character. Please enter again.");
+
+                    }
+                }
+                while(!status);
+                printf ("\n\t\t\tEnter new price: ");
+                scanf ("%f", &current->l.price);
+                printf ("\n\t\t\tData has been updated successfully!!!!\n");
+                system("pause");
+                system("cls");
+                return;
+            }
+            current = current->nextPtr;
+
+        }
+        if(current==NULL)
+        {
+            headMessage("UPDATE");
+            printf("\n\t\t\tId Not found\n");
+            system("pause");
+                system("cls");
+        }
+    }
+}
+
 
 
